@@ -8,10 +8,7 @@ def get_time(file_name):
     date_striped=datetime.datetime.strptime(p,"%a %b %d %H:%M:%S %Y") #Sat Mar 28 06:36:31 2020. is in this format
     date_of_file=datetime.datetime(date_striped.year,date_striped.month,date_striped.day,date_striped.hour,date_striped.minute,date_striped.second)
     return date_of_file
-      #date_to_check=datetime(2020,5,29)
-      # datetime.datetime(2019, 7, 2,23,15,9)
-
-
+    
 def run_(): 
     path=".anime/"
     all_anime_vid=[]
@@ -46,14 +43,4 @@ def run_():
     path_of_anime_ep=all_anime_vid[ind_t]
     name=os.path.basename(path_of_anime_ep)
     return name
-# t=latest_time_
-# ind_t=time_of_all.index(t)
-# path_of_anime_ep=all_anime_vid[ind_t]
-# name=os.path.basename(path_of_anime_ep)
 
-# print(run_())
-
-
-#al=time_of_all[11]
-#print(val)
-#print(time_of_all.index(val))
