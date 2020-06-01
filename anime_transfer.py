@@ -1,7 +1,6 @@
 import ftplib
 import os
 import time
-from dateutil import parser
 from datetime import datetime
 from get_latest_time import run_
 path="storage/shared/UCDownloads/video"
@@ -24,7 +23,6 @@ def download(ftp,file, localdir): #downloads the file
 def convert_bytes_to_mb(file_): #converts given filename size to MB from bytes 
     return str(round(ftp.size(file_)/(1000*1000),2))
 
-print()
 for file_ in files:
     try:
      if(file_.split(".")[1]=="mp4"):
@@ -38,11 +36,6 @@ for file_ in files:
           file_size_in_mb=convert_bytes_to_mb(file_)
           print("downloading {} of size {} MB...".format(file_,file_size_in_mb))
           download(ftp,file_,save_downloads_)
-
-
-      #print(date_of_mfile_)
-      
-      
       
     except (ftplib.error_perm,IndexError):
            print("error")      # print("passed {}".format(file_))
@@ -50,4 +43,3 @@ for file_ in files:
 
 # # for verbose of process slows down download speed
 # #ftp.set_debuglevel(1)
-# #print(ftp.sendcmd("pwd"))
