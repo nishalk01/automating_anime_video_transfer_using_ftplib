@@ -2,12 +2,14 @@ import ftplib
 import os
 import time
 from datetime import datetime
-from get_latest_time import run_
+from get_latest_time import run
 path="storage/shared/UCDownloads/video"
 save_downloads_="."
 ftp=ftplib.FTP()
 ftp.connect("192.168.43.1",1024)
 
+## for verbose of process slows down download speed
+#ftp.set_debuglevel(1)  #u change value of levels for detailed verbose output
 
 ftp.cwd(path)
 files=ftp.nlst(".")
@@ -31,15 +33,14 @@ for file_ in files:
       li=date_time.split(" ")
       my_date = datetime.strptime(li[1], "%Y%m%d%H%M%S")
       date_of_mfile_=datetime(my_date.year,my_date.month,my_date.day, my_date.hour,my_date.minute,my_date.second)
-      name,date_to_check=run_()
+      name,date_to_check=run()
       if(date_of_mfile_>=date_to_check):
           file_size_in_mb=convert_bytes_to_mb(file_)
           print("downloading {} of size {} MB...".format(file_,file_size_in_mb))
           download(ftp,file_,save_downloads_)
       
     except (ftplib.error_perm,IndexError):
-           print("error")      # print("passed {}".format(file_))
+           print("error")  
       
 
-# # for verbose of process slows down download speed
-# #ftp.set_debuglevel(1)
+
