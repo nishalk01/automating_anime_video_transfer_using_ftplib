@@ -25,6 +25,7 @@ def download(ftp,file, localdir): #downloads the file
 def convert_bytes_to_mb(file_): #converts given filename size to MB from bytes 
     return str(round(ftp.size(file_)/(1000*1000),2))
 
+name,date_to_check=run()
 for file_ in files:
     try:
      if(file_.split(".")[1]=="mp4"):
@@ -33,7 +34,6 @@ for file_ in files:
       li=date_time.split(" ")
       my_date = datetime.strptime(li[1], "%Y%m%d%H%M%S")
       date_of_mfile_=datetime(my_date.year,my_date.month,my_date.day, my_date.hour,my_date.minute,my_date.second)
-      name,date_to_check=run()
       if(date_of_mfile_>=date_to_check):
           file_size_in_mb=convert_bytes_to_mb(file_)
           print("downloading {} of size {} MB...".format(file_,file_size_in_mb))
