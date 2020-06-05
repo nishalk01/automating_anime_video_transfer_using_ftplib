@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 from get_latest_time import run
 path="storage/shared/UCDownloads/video"
-save_downloads_="."
+save_downloads_="./anime" #make where your'e saving is inside the folder your checking the list with 
 ftp=ftplib.FTP()
 ftp.connect("192.168.43.1",1024)
 
